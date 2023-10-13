@@ -1,0 +1,29 @@
+Endless fighter. Varje gång man vinner så kommer in ett nytt fiende
+Spelare får välja vapen och spells i början. Kommer kanske göras i form av olika karaktärer.
+(kanske gör att man kan få nya vapen av att spela)
+- Skapa alla instanser och dela ut stats
+- Start meny
+- Fråga för tutorial genom Y/N
+    - Om Y: visa tutorial
+    - Om N: gå vidare
+- Välja klass/karaktär
+    (loop tills man väljer Y)
+    - Gå till en separat meny där spelaren får se stats/spells för class/karaktär
+    - Ge spelaren en y/n val om att välja den
+        - Om Y: karaktär/class bekräftas och spelen startar
+        - Om N: gå tillbaks till select screen och välj en annan karaktär/class
+(loop)
+- Rita ut player och enemy art + hp bar
+- Spelaren får välja en attack med pilar och trycka enter för att välja
+- Enemy väljer random attack
+- Skada delas ut
+    - Om fienden dör:
+        - Spawna in en ny fiende
+        (fortsätter tills spelaren dör)
+    - Om spelare dör:
+        - Avsluta spelet
+        (möjligt vis tillbaks till class/character select)
+
+Misc:
+- Secret bosses
+(ja den återkommer från min förra fighting game)
