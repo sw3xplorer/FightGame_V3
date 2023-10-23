@@ -2,14 +2,17 @@
 {
     public static void InCombat(Fighter player, Fighter enemy, Constructor constructor)
     {
+        UI.HpBar(5, 10, player.maxHp, player.hp);
+        UI.ManaBar(5, 13, player.maxMana, player.mana);
+        UI.EnergyBar(5, 15, player.maxEnergy, player.energy);
+        UI.HpBar(65, 10, enemy.maxHp, enemy.hp);
+        UI.MenuLine();
+        UI.AttackLabel(player);
         Random generator = new Random();
         int totalDamage;
         while(player.hp >= 0)
         {
-            UI.HpBar(5, 10, player.maxHp, player.hp);
-            UI.ManaBar(5, 13, player.maxMana, player.mana);
-            UI.EnergyBar(5, 15, player.maxEnergy, player.energy);
-            UI.HpBar(65, 10, enemy.maxHp, enemy.hp);
+            
             
 
             // PLAYER ACTS FIRST
@@ -23,6 +26,12 @@
                     enemy.hp -= totalDamage * (player.abilities[player.choice].critMultiplier + player.weapon.bonusCritDamage);
                     player.energy += 2;
                     player.mana -= player.abilities[player.choice].manaCost;
+
+                    Console.SetCursorPosition(0,0);
+                    Console.WriteLine("Critical hit!");
+                    Task.Delay(1000).Wait();
+                    Console.SetCursorPosition(0,0);
+                    Console.WriteLine("                                                              ");
                 }
                 else
                 {
@@ -71,6 +80,12 @@
                     player.energy += 2;
                     player.mana -= player.abilities[player.choice].manaCost;
 
+                    Console.SetCursorPosition(0,0);
+                    Console.WriteLine("Critical hit!");
+                    Task.Delay(1000).Wait();
+                    Console.SetCursorPosition(0,0);
+                    Console.WriteLine("                                                              ");
+
                 }
                 else
                 {
@@ -79,6 +94,10 @@
                     player.mana -= player.abilities[player.choice].manaCost;
                 }
                 player.confirmAttack = false;
+                UI.HpBar(5, 10, player.maxHp, player.hp);
+                UI.ManaBar(5, 13, player.maxMana, player.mana);
+                UI.EnergyBar(5, 15, player.maxEnergy, player.energy);
+                UI.HpBar(65, 10, enemy.maxHp, enemy.hp);
             }
 
             if(enemy.hp <= 0)
