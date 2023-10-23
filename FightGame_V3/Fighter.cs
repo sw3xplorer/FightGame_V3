@@ -1,6 +1,8 @@
 public class Fighter
 {
     public string name;
+    public int energy = 0;
+    public int maxEnergy;
     public int hp;
     public int maxHp;
     public int mana;

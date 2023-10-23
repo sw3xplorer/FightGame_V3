@@ -68,6 +68,7 @@
             {
                 confirmTutorial = true;
                 Console.Clear();
+                Task.Delay(500).Wait();
             }
 
             if (confirmTutorial && choice == 0)
@@ -95,6 +96,7 @@
         Console.WriteLine("After a few waves, an elite enemy will appear. They are harder to beat but they have a chance of dropping healing and upgrades.");
         Console.WriteLine("\nPress enter when done reading.");
         Console.ReadLine();
+        Task.Delay(500).Wait();
     }
 
     public static void CharacterStats(Fighter player)
@@ -241,6 +243,14 @@
             {
                 confirmCharacter = true;
                 Console.Clear();
+                Console.WriteLine(@"  ________                        .__                                                           .__                
+ /  _____/_____    _____   ____   |__| ______   ____  ____   _____   _____   ____   ____   ____ |__| ____    ____  
+/   \  ___\__  \  /     \_/ __ \  |  |/  ___/ _/ ___\/  _ \ /     \ /     \_/ __ \ /    \_/ ___\|  |/    \  / ___\ 
+\    \_\  \/ __ \|  Y Y  \  ___/  |  |\___ \  \  \__(  <_> )  Y Y  \  Y Y  \  ___/|   |  \  \___|  |   |  \/ /_/  >
+ \______  (____  /__|_|  /\___  > |__/____  >  \___  >____/|__|_|  /__|_|  /\___  >___|  /\___  >__|___|  /\___  / 
+        \/     \/      \/     \/          \/       \/            \/      \/     \/     \/     \/        \//_____/  ");
+                Task.Delay(2000).Wait();
+                Console.Clear();
             }
 
             if (confirmCharacter && choice == 0)
@@ -253,4 +263,5 @@
             }
         }
     }
+
 }
