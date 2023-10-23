@@ -138,9 +138,9 @@
                                    ");
         Console.WriteLine("\n");
         Console.WriteLine("");
-        Console.WriteLine("Basic ATK: 25 DMG");
-        Console.WriteLine("Thunder leap: 35 DMG, 15 mana");
-        Console.WriteLine("Rising storm: 45 + 5/hit, 30 mana");
+        Console.WriteLine("Basic ATK: 35 DMG");
+        Console.WriteLine("Thunder leap: 50 DMG, 15 mana");
+        Console.WriteLine("Rising storm: 70 + 5/hit, 30 mana");
         Console.WriteLine("Attack with a chance to cause multiple hits");
         Console.WriteLine("\n(ULTIMATE) Hurricane sting: 10/hit + 100, 70 mana");
         Console.WriteLine("Hit multiple times and finish of with a powerful blow");
@@ -188,9 +188,9 @@
                 Console.WriteLine("\n");
                 Console.WriteLine("");
 
-                Console.WriteLine("Basic ATK: 20 DMG");
-                Console.WriteLine("Stellar bolt: 35 DMG, 20 mana");
-                Console.WriteLine("Fireball: 65 DMG, 35 mana");
+                Console.WriteLine("Basic ATK: 35 DMG");
+                Console.WriteLine("Stellar bolt: 45 DMG, 20 mana");
+                Console.WriteLine("Fireball: 90 DMG, 35 mana");
                 Console.WriteLine("\n(ULTIMATE) Spectrum Laser: 250 DMG, 120 mana");
                 Console.WriteLine("Powerful laser. Nothing more to say");
             }

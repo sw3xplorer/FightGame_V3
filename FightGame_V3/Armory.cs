@@ -1,5 +1,6 @@
 public class Armory
 {
+    int itemChoice;
     int roll;
     Random generator = new Random();
     public List<Weapon> commonWeapons = new();
@@ -57,43 +58,115 @@ public class Armory
 
         if(roll <= 19)
         {
-            System.Console.WriteLine("You got nothing");
+            Console.SetCursorPosition(0,0);
+            Console.WriteLine("You got nothing");
+            Task.Delay(1000).Wait();
+            Console.SetCursorPosition(0,0);
+            Console.WriteLine("                         ");
         }
         else if(roll <= 39)
         {
-            System.Console.WriteLine("HP restored");
+            Console.SetCursorPosition(0,0);
+            Console.WriteLine("HP restored");
+            Task.Delay(1000).Wait();
+            Console.SetCursorPosition(0,0);
+            Console.WriteLine("                         ");
             fighter.hp = fighter.maxHp;
         }
         else if(roll <= 59)
         {
-            System.Console.WriteLine("Mana restored");
+            Console.SetCursorPosition(0,0);
+            Console.WriteLine("Mana restored");
+            Console.SetCursorPosition(0,0);
+            Task.Delay(1000).Wait();
+            Console.WriteLine("                         ");
             fighter.mana = fighter.maxMana;
         }
         else if(roll <= 79)
         {
-            System.Console.WriteLine("HP and mana restored");
+            Console.SetCursorPosition(0,0);
+            Console.WriteLine("HP and mana restored");
+            Task.Delay(1000).Wait();
+            Console.SetCursorPosition(0,0);
+            Console.WriteLine("                         ");
             fighter.hp = fighter.maxHp;
-            fighter.mana = figher.maxMana;
+            fighter.mana = fighter.maxMana;
         }
         else
         {
-            System.Console.WriteLine("Weapon found");
+            Console.SetCursorPosition(0,0);
+            Console.WriteLine("Weapon found");
+            Task.Delay(1000).Wait();
+            Console.SetCursorPosition(0,0);
+            Console.WriteLine("                         ");
             roll = generator.Next(100);
             if(roll <= 9)
             {
-                fighter.weapon = legendaryWeapons[generator.Next(legendaryWeapons.Count)];
+                roll = generator.Next(legendaryWeapons.Count); 
+                Console.SetCursorPosition(40,0);
+                Console.WriteLine($"Weapon: {legendaryWeapons[roll].name}");
+                Console.SetCursorPosition(40,1);
+                Console.WriteLine($"Damage: {legendaryWeapons[roll].extraDamage}");
+
+                if(fighter.ItemControl(itemChoice) == 1)
+                {
+                    fighter.weapon = legendaryWeapons[roll]; 
+                }
+                Console.SetCursorPosition(0,0);
+                Console.WriteLine("                                                                       ");
+                Console.SetCursorPosition(0,1);
+                Console.WriteLine("                                                                       ");
             }
             else if(roll <= 29)
             {
+                roll = generator.Next(rareWeapons.Count); 
+                Console.SetCursorPosition(40,0);
+                Console.WriteLine($"Weapon: {rareWeapons[roll].name}");
+                Console.SetCursorPosition(40,1);
+                Console.WriteLine($"Damage: {rareWeapons[roll].extraDamage}");
 
+                if(fighter.ItemControl(itemChoice) == 1)
+                {
+                    fighter.weapon = rareWeapons[roll]; 
+                }
+                Console.SetCursorPosition(0,0);
+                Console.WriteLine("                                                                       ");
+                Console.SetCursorPosition(0,1);
+                Console.WriteLine("                                                                       ");
             }
             else if(roll <= 59)
             {
+                roll = generator.Next(uncommonWeapons.Count); 
+                Console.SetCursorPosition(40,0);
+                Console.WriteLine($"Weapon: {uncommonWeapons[roll].name}");
+                Console.SetCursorPosition(40,1);
+                Console.WriteLine($"Damage: {uncommonWeapons[roll].extraDamage}");
 
+                if(fighter.ItemControl(itemChoice) == 1)
+                {
+                    fighter.weapon = uncommonWeapons[roll]; 
+                }
+                Console.SetCursorPosition(0,0);
+                Console.WriteLine("                                                                       ");
+                Console.SetCursorPosition(0,1);
+                Console.WriteLine("                                                                       ");
             }
             else
-            {
+            {  
+                roll = generator.Next(commonWeapons.Count); 
+                Console.SetCursorPosition(40,0);
+                Console.WriteLine($"Weapon: {commonWeapons[roll].name}");
+                Console.SetCursorPosition(40,1);
+                Console.WriteLine($"Damage: {commonWeapons[roll].extraDamage}");
 
+                if(fighter.ItemControl(itemChoice) == 1)
+                {
+                    fighter.weapon = commonWeapons[roll]; 
+                }
+                Console.SetCursorPosition(0,0);
+                Console.WriteLine("                                                                       ");
+                Console.SetCursorPosition(0,1);
+                Console.WriteLine("                                                                       ");
             }
         }
     }

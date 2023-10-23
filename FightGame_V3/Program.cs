@@ -10,7 +10,7 @@ Info.CharacterStats(player);
 Constructor constructor = new(player, enemy);
 
 
-Combat.InCombat(player, enemy, constructor);
+Combat.InCombat(player, enemy, constructor, armory);
 
 
 

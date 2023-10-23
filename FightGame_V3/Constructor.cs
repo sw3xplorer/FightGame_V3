@@ -2,6 +2,7 @@
 {
     Random generator = new Random();
     int enemyType;
+    public int kills;
     // agile [0], normal [1], brute [2], elite [3]
     public List<int> playerHp = new() { 500, 750 }; //char 1 and char 2 hp
     public List<int> playerEnergy = new() { 100, 120 };
@@ -21,9 +22,9 @@
             player.speed = playerSpeed[0];
             player.maxEnergy = playerEnergy[0];
 
-            player.abilities.Add(new() { name = "Basic ATK", damage = 25, critChance = 5, critMultiplier = 2, manaCost = 0 });
-            player.abilities.Add(new() { name = "Thunder Leap", damage = 35, critChance = 5, critMultiplier = 2, manaCost = 15 });
-            player.abilities.Add(new() { name = "Rising Storm", damage = 45, critChance = 10, critMultiplier = 2, manaCost = 30 });
+            player.abilities.Add(new() { name = "Basic ATK", damage = 35, critChance = 5, critMultiplier = 2, manaCost = 0 });
+            player.abilities.Add(new() { name = "Thunder Leap", damage = 50, critChance = 5, critMultiplier = 2, manaCost = 15 });
+            player.abilities.Add(new() { name = "Rising Storm", damage = 70, critChance = 10, critMultiplier = 2, manaCost = 30 });
             player.abilities.Add(new() { name = "Hurricane Sting", damage = 100, critChance = 10, critMultiplier = 2, manaCost = 70 });
             
         }
@@ -36,9 +37,9 @@
             player.speed = playerSpeed[1];
             player.maxEnergy = playerEnergy[1];
 
-            player.abilities.Add(new() { name = "Basic ATK", damage = 20, critChance = 5, critMultiplier = 3, manaCost = 0 });
-            player.abilities.Add(new() { name = "Stellar Bolt", damage = 35, critChance = 10, critMultiplier = 3, manaCost = 20 });
-            player.abilities.Add(new() { name = "Fireball", damage = 65, critChance = 15, critMultiplier = 5, manaCost = 35 });
+            player.abilities.Add(new() { name = "Basic ATK", damage = 35, critChance = 5, critMultiplier = 3, manaCost = 0 });
+            player.abilities.Add(new() { name = "Stellar Bolt", damage = 45, critChance = 10, critMultiplier = 3, manaCost = 20 });
+            player.abilities.Add(new() { name = "Fireball", damage = 90, critChance = 15, critMultiplier = 5, manaCost = 35 });
             player.abilities.Add(new() { name = "Spectrum Laser", damage = 250, critChance = 15, critMultiplier = 5, manaCost = 120 });
         }
 
@@ -51,10 +52,23 @@
 
     public void BuildEnemy(Fighter enemy)
     {
-        enemyType = generator.Next(3);
-        enemy.maxHp = enemyHp[enemyType];
-        enemy.hp = enemyHp[enemyType];
-        enemy.speed = enemySpeed[enemyType];
-        enemy.abilities.Add(new() { damage = enemyDamage[enemyType] });
+        if(kills == 10)
+        {
+            enemy.maxHp = enemyHp[3];
+            enemy.hp = enemyHp[3];
+            enemy.speed = enemySpeed[3];
+            enemy.abilities.Add(new() { damage = enemyDamage[3] });
+            kills = 0;
+        }
+
+        else
+        {
+            enemyType = generator.Next(2);
+            enemy.maxHp = enemyHp[enemyType];
+            enemy.hp = enemyHp[enemyType];
+            enemy.speed = enemySpeed[enemyType];
+            enemy.abilities.Add(new() { damage = enemyDamage[enemyType] });
+            
+        }
     }
 }
