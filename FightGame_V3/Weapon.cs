@@ -9,5 +9,5 @@
     public int bonusSpeed;
     public int bonusCritDamage;
     public int bonusCritChance;
-    public int bonusDamage;
+    public int passiveBonusDamage;
 }

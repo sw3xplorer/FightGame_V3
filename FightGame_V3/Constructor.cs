@@ -8,6 +8,7 @@
     public List<int> playerSpeed = new() { 25, 20 };
     public List<int> enemyHp = new() { 100, 250, 500, 1250 }; //agile unit, normal, brute, elite hp values
     public List<int> enemySpeed = new() { 30, 15, 18, 19 };
+    public List<int> enemyDamage = new() { 20, 35, 50, 65 };
     public List<int> manaCapacity = new() { 300, 250, 0 }; //0 for enemy
     public Constructor(Fighter player, Fighter enemy)
     {
@@ -24,7 +25,7 @@
             player.abilities.Add(new() { name = "Thunder Leap", damage = 35, critChance = 5, critMultiplier = 2, manaCost = 15 });
             player.abilities.Add(new() { name = "Rising Storm", damage = 45, critChance = 10, critMultiplier = 2, manaCost = 30 });
             player.abilities.Add(new() { name = "Hurricane Sting", damage = 100, critChance = 10, critMultiplier = 2, manaCost = 70 });
-
+            
         }
         else
         {
@@ -45,5 +46,15 @@
         enemy.maxHp = enemyHp[enemyType];
         enemy.hp = enemyHp[enemyType];
         enemy.speed = enemySpeed[enemyType];
+        enemy.abilities.Add(new() { damage = enemyDamage[enemyType] });
+    }
+
+    public void BuildEnemy(Fighter enemy)
+    {
+        enemyType = generator.Next(3);
+        enemy.maxHp = enemyHp[enemyType];
+        enemy.hp = enemyHp[enemyType];
+        enemy.speed = enemySpeed[enemyType];
+        enemy.abilities.Add(new() { damage = enemyDamage[enemyType] });
     }
 }

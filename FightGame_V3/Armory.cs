@@ -19,19 +19,19 @@ public class Armory
         weapons.Add(new() { name = "Magic staff", extraDamage = 10 });
 
         // Rare weapons
-        weapons.Add(new() { name = "War axe", extraDamage = 15});
-        weapons.Add(new() { name = "Enchanted sword", extraDamage = 20});
-        weapons.Add(new() { name = "Khopesh", extraDamage = 25});
-        weapons.Add(new() { name = "Magic gauntlet", extraDamage = 30});
-        weapons.Add(new() { name = "Elder tome", extraDamage = 35});
+        weapons.Add(new() { name = "War axe", extraDamage = 15 });
+        weapons.Add(new() { name = "Enchanted sword", extraDamage = 20 });
+        weapons.Add(new() { name = "Khopesh", extraDamage = 25 });
+        weapons.Add(new() { name = "Magic gauntlet", extraDamage = 30 });
+        weapons.Add(new() { name = "Elder tome", extraDamage = 35 });
 
         // Legendary weapons
         // (abilities are written on the side if they have any)
 
         weapons.Add(new() { name = "Superfors DB 2020 Dead Blow Hammer", extraDamage = 80, bonusSpeed = 10 }); // Chance of an extra turn
-        weapons.Add(new() { name = "Masamune", extraDamage = 70, bonusDamage = 9999999, bonusSpeed = -1, bonusCritDamage = 7}); // Instantly exacute targets who are 7% hp or lower
-        weapons.Add(new() { name = "Boltcaster", extraDamage = 65, bonusDamage = 30, bonusCritChance = 30, bonusCritDamage = 2}); // Chance to shock the target dealing damage again
-        weapons.Add(new() { name = "Archmage Tome", extraDamage = 150}); 
+        weapons.Add(new() { name = "Masamune", extraDamage = 70, passiveBonusDamage = 9999999, bonusSpeed = -1, bonusCritDamage = 7 }); // Instantly exacute targets who are 7% hp or lower
+        weapons.Add(new() { name = "Boltcaster", extraDamage = 65, passiveBonusDamage = 30, bonusCritChance = 30, bonusCritDamage = 2 }); // Chance to shock the target dealing damage again
+        weapons.Add(new() { name = "Archmage Tome", extraDamage = 150 });
         weapons.Add(new() { name = "Silver Knives", extraDamage = 50, bonusSpeed = 999, bonusCritChance = 100, bonusCritDamage = 3 }); // Gain an extra turn with 100% crit chance and increased crit damage
 
 
@@ -43,6 +43,11 @@ public class Armory
         // weapons.Add(new() { name = "Sword of Hisou", extraDamage = 85, bonusDamage = 15}); // Chance of an earthquake, damaging enemy again and gaining another turn
         // weapons.Add(new() { name = "Nuclear Fusion Cannon", extraDamage = 105, bonusSpeed = -5 }); // Chance to burn the target dealing damage again. One leg turns to stone, reducing speed
         // weapons.Add(new() { name = "Wado Ichimonji", extraDamage = 99, bonusCritChance = 15 } );
+    }
+
+    public void GiveRandomWeaponTo(Fighter fighter)
+    {
+
     }
 
 }

@@ -1,8 +1,8 @@
 ﻿// Info.i.StartScreen();
 // i.StartScreen();
-Armory armory = new();
 Fighter player = new();
 Fighter enemy = new();
+Armory armory = new();
 
 Info.StartScreen();
 Info.ViewTutorial();
@@ -15,7 +15,7 @@ UI.ManaBar(5, 13, player.maxMana, player.mana);
 UI.EnergyBar(5, 15, player.maxEnergy, player.energy);
 UI.AttackLabel(player);
 UI.HpBar(65, 10, enemy.maxHp, enemy.hp);
-
+Combat.InCombat(player, enemy, constructor);
 
 
 

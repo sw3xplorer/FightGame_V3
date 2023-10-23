@@ -36,7 +36,7 @@
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
             }
             Console.Write("█");
         }
