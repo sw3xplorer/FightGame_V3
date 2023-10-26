@@ -90,10 +90,11 @@
         Task.Delay(500).Wait();
         Console.WriteLine(" ");
         Console.WriteLine(" ");
-        Console.WriteLine("\nCharacters have 4 different attacks (abilities) which you can use.");
+        Console.WriteLine("\nCharacters have 4 different attacks (abilities) which you can use. Every character has mana and energy for their ultimate.");
         Console.WriteLine("You use the right and left arrows to select an attack (and character in the character select), then press enter to attack (or to confirm character).");
         Console.WriteLine("\nYour objective is to clear as many waves as possible without dying.");
-        Console.WriteLine("After a few waves, an elite enemy will appear. They are harder to beat but they have a chance of dropping healing and upgrades.");
+        Console.WriteLine("After a few waves, an elite enemy will appear.");
+        Console.WriteLine("Every enemy defeated has a chance to drop loot such as HP, mana and weapons to boost damage.");
         Console.WriteLine("\nPress enter when done reading.");
         Console.ReadLine();
         Task.Delay(500).Wait();
@@ -243,12 +244,12 @@
             {
                 confirmCharacter = true;
                 Console.Clear();
-                Console.WriteLine(@"  ________                        .__                                                           .__                
- /  _____/_____    _____   ____   |__| ______   ____  ____   _____   _____   ____   ____   ____ |__| ____    ____  
-/   \  ___\__  \  /     \_/ __ \  |  |/  ___/ _/ ___\/  _ \ /     \ /     \_/ __ \ /    \_/ ___\|  |/    \  / ___\ 
-\    \_\  \/ __ \|  Y Y  \  ___/  |  |\___ \  \  \__(  <_> )  Y Y  \  Y Y  \  ___/|   |  \  \___|  |   |  \/ /_/  >
- \______  (____  /__|_|  /\___  > |__/____  >  \___  >____/|__|_|  /__|_|  /\___  >___|  /\___  >__|___|  /\___  / 
-        \/     \/      \/     \/          \/       \/            \/      \/     \/     \/     \/        \//_____/  ");
+                Console.WriteLine(@"_________            .___       .__                                                 .__                
+\_   ___ \  ____   __| _/____   |__| ______ _____________   ____ ___________ _______|__| ____    ____  
+/    \  \/ /  _ \ / __ |/ __ \  |  |/  ___/ \____ \_  __ \_/ __ \\____ \__  \\_  __ \  |/    \  / ___\ 
+\     \___(  <_> ) /_/ \  ___/  |  |\___ \  |  |_> >  | \/\  ___/|  |_> > __ \|  | \/  |   |  \/ /_/  >
+ \______  /\____/\____ |\___  > |__/____  > |   __/|__|    \___  >   __(____  /__|  |__|___|  /\___  / 
+        \/            \/    \/          \/  |__|               \/|__|       \/              \//_____/  ");
                 Task.Delay(2000).Wait();
                 Console.Clear();
             }

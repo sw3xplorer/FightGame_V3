@@ -34,7 +34,7 @@ public class Combat
                     enemy.hp -= totalDamage * (player.abilities[player.choice].critMultiplier + player.weapon.bonusCritDamage);
                     if(player.energy < player.maxEnergy)
                     {
-                        if((player.energy += 2) > player.maxEnergy)
+                        if((player.energy + 2) > player.maxEnergy)
                         {
                             player.energy++;
                         }
@@ -56,7 +56,7 @@ public class Combat
                     enemy.hp -= totalDamage;
                     if(player.energy < player.maxEnergy)
                     {
-                        if((player.energy += 2) > player.maxEnergy)
+                        if((player.energy + 2) > player.maxEnergy)
                         {
                             player.energy++;
                         }
@@ -119,7 +119,7 @@ public class Combat
                     enemy.hp -= totalDamage * (player.abilities[player.choice].critMultiplier + player.weapon.bonusCritDamage);
                     if(player.energy < player.maxEnergy)
                     {
-                        if((player.energy += 2) > player.maxEnergy)
+                        if((player.energy + 2) > player.maxEnergy)
                         {
                             player.energy++;
                         }
@@ -141,7 +141,7 @@ public class Combat
                     enemy.hp -= totalDamage;
                     if(player.energy < player.maxEnergy)
                     {
-                        if((player.energy += 2) > player.maxEnergy)
+                        if((player.energy + 2) > player.maxEnergy)
                         {
                             player.energy++;
                         }
@@ -164,12 +164,12 @@ public class Combat
             {
                 totalKills++;
                 constructor.kills++;
-                Console.SetCursorPosition(0, Console.LargestWindowHeight);
+                Console.SetCursorPosition(0, Console.LargestWindowHeight-1);
                 Console.WriteLine($"Kills: {totalKills}");
 
                 if(player.energy < player.maxEnergy)
                     {
-                        if((player.energy += 10) > player.maxEnergy)
+                        if((player.energy + 10) > player.maxEnergy)
                         {
                             player.energy += (player.maxEnergy - player.energy);
                         }
