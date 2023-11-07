@@ -88,4 +88,17 @@
         Console.SetCursorPosition((int)(Console.WindowWidth * 0.75) + 1, (int)(Console.LargestWindowHeight*0.95));
         Console.WriteLine($"{player.abilities[3].name}");
     }
+
+    public static void ClearArea(int startX, int startY, int endX, int endY)
+    {
+        for (int i = startX; i < endX; i++)
+        {
+                for (int j = startY; j < endY; j++)
+                {
+                    Console.SetCursorPosition(i, j);
+                    Console.Write(" ");
+
+                }
+        }
+    }
 }

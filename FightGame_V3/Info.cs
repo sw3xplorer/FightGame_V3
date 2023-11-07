@@ -139,9 +139,9 @@
                                    ");
         Console.WriteLine("\n");
         Console.WriteLine("");
-        Console.WriteLine("Basic ATK: 35 DMG");
-        Console.WriteLine("Thunder leap: 50 DMG, 15 mana");
-        Console.WriteLine("Rising storm: 70 + 5/hit, 30 mana");
+        Console.WriteLine("Basic ATK: 45 DMG");
+        Console.WriteLine("Thunder leap: 65 DMG, 15 mana");
+        Console.WriteLine("Rising storm: 80 + 5/hit, 30 mana");
         Console.WriteLine("Attack with a chance to cause multiple hits");
         Console.WriteLine("\n(ULTIMATE) Hurricane sting: 10/hit + 100, 70 mana");
         Console.WriteLine("Hit multiple times and finish of with a powerful blow");
