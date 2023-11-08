@@ -20,6 +20,7 @@ Spelare får välja vapen och spells i början. Kommer kanske göras i form av o
     - Om fienden dör:
         - Spawna in en ny fiende
         (fortsätter tills spelaren dör)
+    
     - Om spelare dör:
         - Avsluta spelet
         (möjligt vis tillbaks till class/character select)
@@ -27,3 +28,7 @@ Spelare får välja vapen och spells i början. Kommer kanske göras i form av o
 Misc:
 - Secret bosses
 (ja den återkommer från min förra fighting game)
+
+Future plans:
+- Restart screen
+- Ljud effekter

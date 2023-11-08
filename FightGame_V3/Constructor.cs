@@ -1,6 +1,9 @@
 ﻿public class Constructor
 {
     Random generator = new Random();
+    public int addedHp = 0;
+    public int addedDamage = 0;
+    public int built = 0;
     int enemyType;
     public string bossPrompt;
     public int kills;
@@ -9,7 +12,7 @@
     public List<int> playerEnergy = new() { 100, 120 };
     public List<int> playerSpeed = new() { 25, 20 };
 
-    public List<int> enemyHp = new() { 100, 250, 500, 1250 }; //agile unit, normal, brute, elite hp values
+    public List<int> enemyHp = new() { 100, 250, 500, 1000 }; //agile unit, normal, brute, elite hp values
     public List<int> enemySpeed = new() { 30, 15, 18, 19 };
     public List<int> enemyDamage = new() { 20, 35, 50, 65 };
     public List<int> manaCapacity = new() { 300, 250, 0 }; //0 for enemy
@@ -65,24 +68,30 @@
 
     public void BuildEnemy(Fighter enemy)
     {
+        if(built % 10 == 0 && built > 0)
+        {
+            addedHp += 50;
+            addedDamage += 15;
+        }
+
         if(kills == 10)
         {
-            enemy.maxHp = enemyHp[3];
-            enemy.hp = enemyHp[3];
+            enemy.maxHp = enemyHp[3] + addedHp;
+            enemy.hp = enemy.maxHp;
             enemy.speed = enemySpeed[3];
-            enemy.abilities.Add(new() { damage = enemyDamage[3] });
+            enemy.abilities.Add(new() { damage = enemyDamage[3] + addedDamage });
             kills = 0;
         }
 
         else
         {
             enemyType = generator.Next(2);
-            enemy.maxHp = enemyHp[enemyType];
-            enemy.hp = enemyHp[enemyType];
+            enemy.maxHp = enemyHp[enemyType] + addedHp;
+            enemy.hp = enemy.maxHp;
             enemy.speed = enemySpeed[enemyType];
-            enemy.abilities.Add(new() { damage = enemyDamage[enemyType] });
-            
+            enemy.abilities.Add(new() { damage = enemyDamage[enemyType] + addedDamage });
         }
+        built++;
     }
 
     public void BuildBoss(Fighter boss)
@@ -104,5 +113,44 @@
                 Enemy_ASCII.Draw(boss);
             }
         }
+    }
+
+    public void RestartConstructor(Fighter player, Fighter enemy)
+    {
+        if (player.name == "Owen")
+        {
+            player.maxHp = playerHp[0];
+            player.hp = playerHp[0];
+            player.maxMana = manaCapacity[0];
+            player.mana = manaCapacity[0];
+            player.speed = playerSpeed[0];
+            player.maxEnergy = playerEnergy[0];
+
+            player.abilities.Add(new() { name = "Basic ATK", damage = 45, critChance = 5, critMultiplier = 2, manaCost = 0 });
+            player.abilities.Add(new() { name = "Thunder Leap", damage = 65, critChance = 5, critMultiplier = 2, manaCost = 15 });
+            player.abilities.Add(new() { name = "Rising Storm", damage = 80, critChance = 10, critMultiplier = 2, manaCost = 30 });
+            player.abilities.Add(new() { name = "Hurricane Sting", damage = 100, critChance = 10, critMultiplier = 2, manaCost = 70 });
+            
+        }
+        else
+        {
+            player.maxHp = playerHp[1];
+            player.hp = playerHp[1];
+            player.maxMana = manaCapacity[1];
+            player.mana = manaCapacity[1];
+            player.speed = playerSpeed[1];
+            player.maxEnergy = playerEnergy[1];
+
+            player.abilities.Add(new() { name = "Basic ATK", damage = 35, critChance = 5, critMultiplier = 3, manaCost = 0 });
+            player.abilities.Add(new() { name = "Stellar Bolt", damage = 45, critChance = 10, critMultiplier = 3, manaCost = 20 });
+            player.abilities.Add(new() { name = "Fireball", damage = 90, critChance = 15, critMultiplier = 5, manaCost = 35 });
+            player.abilities.Add(new() { name = "Spectrum Laser", damage = 250, critChance = 15, critMultiplier = 5, manaCost = 120 });
+        }
+
+        enemyType = generator.Next(3);
+        enemy.maxHp = enemyHp[enemyType];
+        enemy.hp = enemyHp[enemyType];
+        enemy.speed = enemySpeed[enemyType];
+        enemy.abilities.Add(new() { damage = enemyDamage[enemyType] });
     }
 }

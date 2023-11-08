@@ -154,6 +154,7 @@ public class Armory
         UI.ClearArea(0, 0, 170, 4);
     }
 
+// Activates the bonus of the weapon if it has one
     public static void LegendaryBonus(List<Weapon> weapons, int roll)
     {
         if (weapons[roll].name == "Boltcaster")
@@ -168,10 +169,10 @@ public class Armory
         {
             WriteMiscStats(weapons, roll, "Execute targets at 7% or lower HP");
         }
-        else if (weapons[roll].name == "Silver Knives")
-        {
-            WriteMiscStats(weapons, roll, "Gain an extra turn with extra crit damage and 100% crit chance");
-        }
+        // else if (weapons[roll].name == "Silver Knives")
+        // {
+        //     WriteMiscStats(weapons, roll, "Gain an extra turn with extra crit damage and 100% crit chance");
+        // }
         else if (weapons[roll].name == "Spear of Gungnir")
         {
             WriteMiscStats(weapons, roll, "Heal on attacks");
@@ -198,6 +199,7 @@ public class Armory
         }
     }
 
+// Writes other stats such as crit rate & damage and bonuses
     public static void WriteMiscStats(List<Weapon> weapons, int roll, string bonus)
     {
         Console.SetCursorPosition(85, 0);

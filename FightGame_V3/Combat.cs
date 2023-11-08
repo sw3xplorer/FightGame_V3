@@ -4,6 +4,7 @@ public class Combat
 {
     public static void InCombat(Fighter player, Fighter enemy, Constructor constructor, Armory armory)
     {
+        
         Player_ASCII.Draw(player);
         bool bossFight = false;
         int totalKills = 0;
@@ -15,9 +16,8 @@ public class Combat
         UI.MenuLine();
         UI.AttackLabel(player);
         Random generator = new Random();
-        int totalDamage;
         int totalSpeed;
-        while(player.hp >= 0)
+        while(player.hp > 0)
         {
             
             Console.SetCursorPosition(0,0);
@@ -103,6 +103,7 @@ public class Combat
 
         }
         UI.ClearArea((int)(Console.WindowWidth * 0.1), (int)(Console.WindowHeight * 0.3), (int)Console.WindowWidth / 2, (int)(Console.WindowHeight * 0.9) - 1);
+        Restart(totalKills, player, enemy, constructor, armory);
     }
     public static int ExtraHits(Fighter fighter, int damage)
     {
@@ -313,5 +314,71 @@ public class Combat
                         }
                     }
                 }
+    }
+    public static void Restart(int totalKills, Fighter player, Fighter enemy, Constructor constructor, Armory armory)
+    {
+        bool restart = false;
+        int choice = 0;
+        Console.SetCursorPosition((int)(Console.LargestWindowWidth*0.48), (int)(Console.LargestWindowHeight*0.5));
+        Console.WriteLine("No");
+        Console.SetCursorPosition((int)(Console.LargestWindowWidth*0.5), (int)(Console.LargestWindowHeight*0.5));
+        Console.WriteLine("Yes");
+        Console.SetCursorPosition((int)(Console.LargestWindowWidth*0.48), (int)(Console.LargestWindowHeight*0.5+2));
+        Console.WriteLine("Restart?");
+
+        while(!restart)
+        {
+            if(choice >= 0 && choice <= 1)
+            {
+                if((choice * (int)(Console.LargestWindowWidth*0.5)) == 0)
+                {
+                    Console.SetCursorPosition((int)(Console.LargestWindowWidth * 0.48)-1, (int)(Console.LargestWindowHeight*0.5));
+                }
+                else
+                {
+                    Console.SetCursorPosition((choice * (int)(Console.LargestWindowWidth*0.5))-1, (int)(Console.LargestWindowHeight*0.5));
+                }
+                Console.Write(">");
+            }
+
+            var key = Console.ReadKey(true);
+            if (key.Key == ConsoleKey.RightArrow && choice < 1)
+            {
+                choice++;
+                Console.SetCursorPosition(((int)(Console.LargestWindowWidth*0.48))-1, (int)(Console.LargestWindowHeight*0.5));
+                Console.Write(" ");
+            }
+            else if (key.Key == ConsoleKey.LeftArrow && choice > 0)
+            {
+                choice--;
+                Console.SetCursorPosition(((int)(Console.LargestWindowWidth*0.5))-1, (int)(Console.LargestWindowHeight*0.5));
+                Console.Write(" ");
+            }
+            else if (key.Key == ConsoleKey.Enter)
+            {
+                restart = true;
+                Console.Clear();
+                Task.Delay(500).Wait();
+                
+            }
+
+            if(restart && choice == 1)
+            {
+                totalKills = 0;
+                player.abilities.Clear();
+                player.weapon = new();
+                player.name = null;
+                constructor.addedDamage = 0;
+                constructor.addedHp = 0;
+                constructor.built = 0;
+                Info.CharacterStats(player);
+                constructor.RestartConstructor(player, enemy);
+                InCombat(player, enemy, constructor, armory);
+            }
+            else if(restart && choice == 0)
+            {
+                System.Environment.Exit(1);
+            }
+        }
     }
 }
