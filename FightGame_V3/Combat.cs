@@ -103,7 +103,7 @@ public class Combat
 
         }
         UI.ClearArea((int)(Console.WindowWidth * 0.1), (int)(Console.WindowHeight * 0.3), (int)Console.WindowWidth / 2, (int)(Console.WindowHeight * 0.9) - 1);
-        Restart(totalKills, player, enemy, constructor, armory);
+        Restart(totalKills, player, enemy, constructor, armory, bossFight);
     }
     public static int ExtraHits(Fighter fighter, int damage)
     {
@@ -315,7 +315,7 @@ public class Combat
                     }
                 }
     }
-    public static void Restart(int totalKills, Fighter player, Fighter enemy, Constructor constructor, Armory armory)
+    public static void Restart(int totalKills, Fighter player, Fighter enemy, Constructor constructor, Armory armory, bool bossFight)
     {
         bool restart = false;
         int choice = 0;
@@ -364,13 +364,17 @@ public class Combat
 
             if(restart && choice == 1)
             {
+                bossFight = false;
                 totalKills = 0;
                 player.abilities.Clear();
                 player.weapon = new();
+                player.energy = 0;
                 player.name = null;
                 constructor.addedDamage = 0;
                 constructor.addedHp = 0;
                 constructor.built = 0;
+                enemy.abilities.Clear();
+                enemy.name = null;
                 Info.CharacterStats(player);
                 constructor.RestartConstructor(player, enemy);
                 InCombat(player, enemy, constructor, armory);

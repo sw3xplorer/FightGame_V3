@@ -44,7 +44,7 @@ public class Armory
 
         legendaryWeapons.Add(new() { name = "Boltcaster", extraDamage = 65, passiveBonusDamage = 30, bonusCritChance = 30, bonusCritDamage = 2 }); // Chance to shock the target dealing damage again
         legendaryWeapons.Add(new() { name = "Superfors DB 2020 Dead Blow Hammer", extraDamage = 116, bonusSpeed = 10 }); // Chance of an extra turn
-        legendaryWeapons.Add(new() { name = "Masamune", extraDamage = 70, bonusSpeed = -1, bonusCritChance = 7, bonusCritDamage = 7 }); // Instantly exacute targets who are 7% hp or lower
+        legendaryWeapons.Add(new() { name = "Masamune", extraDamage = 70, bonusSpeed = -1, bonusCritChance = 77, bonusCritDamage = 7 }); // Instantly exacute targets who are 7% hp or lower
         legendaryWeapons.Add(new() { name = "Buster Sword", extraDamage = 100, bonusCritChance = 15, bonusSpeed = -2 });
         legendaryWeapons.Add(new() { name = "Silver Knives", extraDamage = 50, bonusSpeed = 999, bonusCritChance = 45, bonusCritDamage = 3 }); // Gain an extra turn with 100% crit chance and increased crit damage
         legendaryWeapons.Add(new() { name = "Spear of Gungnir", extraDamage = 100, bonusCritChance = 20, bonusCritDamage = 2 }); // Gain lifesteal on attacks
@@ -58,14 +58,14 @@ public class Armory
     {
         roll = generator.Next(100);
 
-        if (roll <= 19)
+        if (roll <= 19) //19
         {
             Console.SetCursorPosition(0, 0);
             Console.WriteLine("You got nothing");
             Task.Delay(1000).Wait();
             UI.ClearArea(0, 1, 50, 0);
         }
-        else if (roll <= 39)
+        else if (roll <= 39) //39
         {
             Console.SetCursorPosition(0, 0);
             Console.WriteLine("HP restored");
@@ -73,7 +73,7 @@ public class Armory
             UI.ClearArea(0, 1, 50, 0);
             fighter.hp = fighter.maxHp;
         }
-        else if (roll <= 59)
+        else if (roll <= 59) //59
         {
             Console.SetCursorPosition(0, 0);
             Console.WriteLine("Mana restored");
@@ -81,7 +81,7 @@ public class Armory
             UI.ClearArea(0, 1, 50, 0);
             fighter.mana = fighter.maxMana;
         }
-        else if (roll <= 79)
+        else if (roll <= 79) // 79
         {
             Console.SetCursorPosition(0, 0);
             Console.WriteLine("HP and mana restored");
@@ -154,7 +154,7 @@ public class Armory
         UI.ClearArea(0, 0, 170, 4);
     }
 
-// Activates the bonus of the weapon if it has one
+    // Activates the bonus of the weapon if it has one
     public static void LegendaryBonus(List<Weapon> weapons, int roll)
     {
         if (weapons[roll].name == "Boltcaster")
@@ -199,7 +199,7 @@ public class Armory
         }
     }
 
-// Writes other stats such as crit rate & damage and bonuses
+    // Writes other stats such as crit rate & damage and bonuses
     public static void WriteMiscStats(List<Weapon> weapons, int roll, string bonus)
     {
         Console.SetCursorPosition(85, 0);

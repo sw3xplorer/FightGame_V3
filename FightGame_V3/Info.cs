@@ -162,14 +162,14 @@
 
                 Console.WriteLine("\n");
                 Console.WriteLine("");
-                Console.WriteLine(@"___  ___     _ _               
-|  \/  |    | (_)              
-| .  . | ___| |_ ___ ___  __ _ 
-| |\/| |/ _ \ | / __/ __|/ _` |
-| |  | |  __/ | \__ \__ \ (_| |
-\_|  |_/\___|_|_|___/___/\__,_|
-                               
-                               ");
+                Console.WriteLine(@"___  ___      _ _               
+|  \/  |     | (_)              
+| .  . | __ _| |_ ___ ___  __ _ 
+| |\/| |/ _` | | / __/ __|/ _` |
+| |  | | (_| | | \__ \__ \ (_| |
+\_|  |_/\__,_|_|_|___/___/\__,_|
+                                
+                                ");
                 Console.WriteLine("\n");
                 Console.WriteLine("");
 
@@ -191,7 +191,7 @@
 
                 Console.WriteLine("Basic ATK: 35 DMG");
                 Console.WriteLine("Stellar bolt: 45 DMG, 20 mana");
-                Console.WriteLine("Fireball: 90 DMG, 35 mana");
+                Console.WriteLine("Flying Star: 90 DMG, 35 mana");
                 Console.WriteLine("\n(ULTIMATE) Spectrum Laser: 250 DMG, 120 mana");
                 Console.WriteLine("Powerful laser. Nothing more to say");
             }
@@ -260,7 +260,7 @@
             }
             else
             {
-                player.name = "Melissa";
+                player.name = "Malissa";
             }
         }
     }

@@ -19,14 +19,14 @@
 
 
     // Bosses: Tagilla, Genesis, Minos Prime
-    public List<string> bossPromps = new() { "5%", "Loveless", "Creature of steel", "sus", "Ashina" };
-    public List<string> bossNames = new() { "Tagilla", "Genesis", "Minos Prime", "Amogus", "Isshin, the Sword Saint" };
-    public List<string> bossIntro = new() { "*angry russian*", "That's no way to talk to a hero!", "Thy punishment... is death!", "Amogus, sus!", "Come at me..." };
-    public List<int> bossHp = new() { 2500, 2000, 3000, 2750, 3000 };
-    public List<int> bossSpeed = new() { 35, 50, 40, 30, 45 };
-    public List<int> bossDamage = new() { 80, 90, 85, 1, 110 };
-    public List<int> bossCritChance = new() { 15, 35, 20, 1, 5 };
-    public List<int> bossCritMultiplier = new() { 5, 3, 4, 6666666, 100 };
+    public List<string> bossPromps = new() { "5%", "Loveless", "Creature of steel", "sus", "Ashina", };
+    public List<string> bossNames = new() { "Tagilla", "Genesis", "Minos Prime", "Amogus", "Isshin, the Sword Saint", "Micke" };
+    public List<string> bossIntro = new() { "*angry russian*", "That's no way to talk to a hero!", "Thy punishment... is death!", "Amogus, sus!", "Come at me...", "Tja..." };
+    public List<int> bossHp = new() { 2500, 2000, 3000, 2750, 3000, 9999 };
+    public List<int> bossSpeed = new() { 35, 50, 40, 30, 45, 999 };
+    public List<int> bossDamage = new() { 80, 90, 85, 1, 110, 150 };
+    public List<int> bossCritChance = new() { 15, 35, 20, 1, 5, 20 };
+    public List<int> bossCritMultiplier = new() { 5, 3, 4, 6666666, 100, 2 };
     public Constructor(Fighter player, Fighter enemy)
     {
         if (player.name == "Owen")
@@ -55,7 +55,7 @@
 
             player.abilities.Add(new() { name = "Basic ATK", damage = 35, critChance = 5, critMultiplier = 3, manaCost = 0 });
             player.abilities.Add(new() { name = "Stellar Bolt", damage = 45, critChance = 10, critMultiplier = 3, manaCost = 20 });
-            player.abilities.Add(new() { name = "Fireball", damage = 90, critChance = 15, critMultiplier = 5, manaCost = 35 });
+            player.abilities.Add(new() { name = "Flying Star", damage = 90, critChance = 15, critMultiplier = 5, manaCost = 35 });
             player.abilities.Add(new() { name = "Spectrum Laser", damage = 250, critChance = 15, critMultiplier = 5, manaCost = 120 });
         }
 
@@ -70,8 +70,8 @@
     {
         if(built % 10 == 0 && built > 0)
         {
-            addedHp += 50;
-            addedDamage += 15;
+            addedHp += 25;
+            addedDamage += 10;
         }
 
         if(kills == 10)
@@ -96,27 +96,46 @@
 
     public void BuildBoss(Fighter boss)
     {
-        for (int i = 0; i < bossPromps.Count; i++)
+        if(generator.Next(100) >= 99)
         {
-            string prompt = bossPromps[i];
-            if(bossPrompt == prompt)
+            boss.name = bossNames[5];
+            boss.maxHp = bossHp[5];
+            boss.hp = boss.maxHp;
+            boss.speed = bossSpeed[5];
+            boss.abilities.Add(new()  { damage = bossDamage[5], critChance = bossCritChance[5], critMultiplier = bossCritMultiplier[5] });
+            Console.SetCursorPosition(0,0);
+            Console.WriteLine(bossIntro[5]);
+            Task.Delay(3000).Wait();
+            UI.ClearArea(0,0, 100, 1);
+            Enemy_ASCII.Draw(boss);
+        }
+
+        else
+        {
+            for (int i = 0; i < bossPromps.Count; i++)
             {
-                boss.name = bossNames[i];
-                boss.maxHp = bossHp[i];
-                boss.hp = bossHp[i];
-                boss.speed = bossSpeed[i];
-                boss.abilities.Add(new()  { damage = bossDamage[i], critChance = bossCritChance[i], critMultiplier = bossCritMultiplier[i] });
-                Console.SetCursorPosition(0,0);
-                Console.WriteLine(bossIntro[i]);
-                Task.Delay(3000).Wait();
-                UI.ClearArea(0,0, 100, 1);
-                Enemy_ASCII.Draw(boss);
+                string prompt = bossPromps[i];
+                if(bossPrompt == prompt)
+                {
+                    boss.name = bossNames[i];
+                    boss.maxHp = bossHp[i];
+                    boss.hp = bossHp[i];
+                    boss.speed = bossSpeed[i];
+                    boss.abilities.Add(new()  { damage = bossDamage[i], critChance = bossCritChance[i], critMultiplier = bossCritMultiplier[i] });
+                    Console.SetCursorPosition(0,0);
+                    Console.WriteLine(bossIntro[i]);
+                    Task.Delay(3000).Wait();
+                    UI.ClearArea(0,0, 100, 1);
+                    Enemy_ASCII.Draw(boss);
+                }
             }
         }
     }
 
     public void RestartConstructor(Fighter player, Fighter enemy)
     {
+        kills = 0;
+        built = 0;
         if (player.name == "Owen")
         {
             player.maxHp = playerHp[0];
@@ -143,11 +162,11 @@
 
             player.abilities.Add(new() { name = "Basic ATK", damage = 35, critChance = 5, critMultiplier = 3, manaCost = 0 });
             player.abilities.Add(new() { name = "Stellar Bolt", damage = 45, critChance = 10, critMultiplier = 3, manaCost = 20 });
-            player.abilities.Add(new() { name = "Fireball", damage = 90, critChance = 15, critMultiplier = 5, manaCost = 35 });
+            player.abilities.Add(new() { name = "Flying Star", damage = 90, critChance = 15, critMultiplier = 5, manaCost = 35 });
             player.abilities.Add(new() { name = "Spectrum Laser", damage = 250, critChance = 15, critMultiplier = 5, manaCost = 120 });
         }
 
-        enemyType = generator.Next(3);
+        enemyType = generator.Next(2);
         enemy.maxHp = enemyHp[enemyType];
         enemy.hp = enemyHp[enemyType];
         enemy.speed = enemySpeed[enemyType];
