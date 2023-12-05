@@ -164,6 +164,10 @@ public class Combat
                 {
                     if(generator.Next(100) < 29)
                     {
+                        Console.SetCursorPosition(0,0);
+                        Console.WriteLine("Bonus attack!");
+                        Task.Delay(2000).Wait();
+                        UI.ClearArea(0, 0, 15, 1);
                         Attack(player, enemy);
                     }
                 }
@@ -180,6 +184,10 @@ public class Combat
                     UI.EnergyBar(5, 15, player.maxEnergy, player.energy);
                     player.weapon.bonusCritChance = 100;
                     player.weapon.bonusCritDamage = 5;
+                    Console.SetCursorPosition(0,0);
+                    Console.WriteLine("Bonus attack!");
+                    Task.Delay(2000).Wait();
+                    UI.ClearArea(0, 0, 15, 1);
                     Attack(player, enemy);
                     player.weapon.bonusCritChance = 45;
                     player.weapon.bonusCritDamage = 3;
@@ -204,6 +212,10 @@ public class Combat
                    while(generator.Next(100) < 19)
                    {
                         enemy.hp -= player.weapon.passiveBonusDamage;
+                        Console.SetCursorPosition(0,0);
+                        Console.WriteLine("Bonus attack!");
+                        Task.Delay(2000).Wait();
+                        UI.ClearArea(0, 0, 15, 1);
                         Attack(player, enemy);
                    }
                 }
@@ -213,30 +225,6 @@ public class Combat
                     {
                         enemy.hp -= player.weapon.passiveBonusDamage;
                     }
-                }
-                else if(player.weapon.name == "")
-                {
-
-                }
-                else if(player.weapon.name == "")
-                {
-
-                }
-                else if(player.weapon.name == "")
-                {
-
-                }
-                else if(player.weapon.name == "")
-                {
-
-                }
-                else if(player.weapon.name == "")
-                {
-
-                }
-                else if(player.weapon.name == "")
-                {
-
                 }
             }
         }
