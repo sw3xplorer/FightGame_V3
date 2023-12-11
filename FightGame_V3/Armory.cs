@@ -97,7 +97,7 @@ public class Armory
             Task.Delay(1000).Wait();
             UI.ClearArea(0, 0, 50, 1);
             roll = generator.Next(100);
-            if (roll <= 99)
+            if (roll <= 9)
             {
                 roll = generator.Next(legendaryWeapons.Count);
                 Console.SetCursorPosition(40, 0);
